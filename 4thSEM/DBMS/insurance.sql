@@ -52,8 +52,16 @@ show tables;
 insert into person
 	values('A01','Richard','Srinivas Nagar'),('A02','Pradeep','Rajaji nagar'),('A03','Smith','Ashok Nagar'),('A04','Venu','N R Colony'),('A05','John','Hanumanth Nagar');
 insert into car
-		values('KA052250','Indica',1990),('KA031181','Lancer',1957),('KA095477','Toyota',1998),('KA053408','Honda',2008),('KA0451702','Audi',2005);
+		values('KA052250','Indica',1990),('KA031181','Lancer',1957),('KA095477','Toyota',1998),('KA053408','Honda',2008),('KA041702','Audi',2005);
 insert into owns(driver_id,reg_num)
 	values ('A01',"KA052250"),('A02',"KA053408"),('A03',"KA031181"),('A04',"KA095477"),('A05',"KA041702");
 insert into accident
 	values (11,20030101,'Mysore Road'),(12,20040202,'South End Circle'),(13,20030121,'Bull Temple Road'),(14,20080217,'Mysore Road'),(15,20050403,'Kannakpura Road');
+update participated
+    set damage_amount=25000
+    where report_num=12;
+select count(report_num) from accident
+    where accident_date between '2008-01-01' and '2008-12-31';						
+select count(report_num) from participated
+    where reg_num="KA053408";						
+						
