@@ -9,7 +9,7 @@ class graph:
                 print(s,sep=" ")
                 for i in self.graph[s]:
                     if visited[i]==False:
-                        self.dfsUtil(i,visited)
+                        self.DFSUtil(i,visited)
 
         def dfs(self):
                 V=len(self.graph)
