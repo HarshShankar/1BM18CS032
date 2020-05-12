@@ -4,25 +4,25 @@
 
 
 ###### Lab 1
-* [Tower of Hanoi (Recursive)](../master/toh.py)
-* [To find GCD (Recursive)](../master/gcd.py)
+* [Tower of Hanoi (Recursive)](../ADA/toh.py)
+* [To find GCD (Recursive)](../ADA/gcd.py)
 
 ###### Lab 2
-* [Recursive Binary search with graph](../master/binary_search.py)
-* [Linear search with graph](../master/linear_search.py)
+* [Recursive Binary search with graph](../ADA/binary_search.py)
+* [Linear search with graph](../ADA/linear_search.py)
 	
 ###### Lab 3
-* [Selection Sort and compute its time taken](../master/Selectionsort.py)
+* [Selection Sort and compute its time taken](../ADA/Selectionsort.py)
 
 ###### Lab 4
-* [Reachable nodes in Digraph using BFS](../master/bfs_reachable.py)
-* [Check if graph is connected using DFS](../master/dfs_connected.py)
+* [Reachable nodes in Digraph using BFS](../ADA/bfs_reachable.py)
+* [Check if graph is connected using DFS](../ADA/dfs_connected.py)
 	
 ###### Lab 5
-* [Insertion sort and compute the time taken](../master/insertion.py)
+* [Insertion sort and compute the time taken](../ADA/insertion.py)
 
 ###### Lab 6
-* [Topological ordering of a given digraph](../master/topsort.py)
+* [Topological ordering of a given digraph](../ADA/topsort.py)
 
 ###### Lab 7
-* [Permutations using Johnson Trotter algorithm](../master/Jhonsontot.py)
+* [Permutations using Johnson Trotter algorithm](../ADA/Jhonsontot.py)
