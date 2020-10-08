@@ -4,7 +4,7 @@
 
 echo "Enter values of a and b"
 read a b 
-sum= `expr $a + $b`
+sum=`expr $a + $b`
 sub=`expr $a - $b`
 mul=`expr $a \* $b`
 div=`expr $a / $b`
