@@ -1,4 +1,4 @@
-#Lab Programs
+# Lab Programs
 
 1. [Program to print today's date](./first.sh)
 2. [Program to perform basic calculator operations](./calc.sh)
