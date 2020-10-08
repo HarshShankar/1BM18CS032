@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Program to perform calculator operations
 echo "Enter two numbers"
 read a
 read b
