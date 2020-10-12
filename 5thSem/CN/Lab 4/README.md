@@ -10,21 +10,21 @@
 
 ### Topology
 
-[topology](topology.png)
+![topology](topology.png)
 
 ### IP Route for Router 0
 
-[iproute0](iproute0.png)
+![iproute0](iproute0.png)
 
 ### IP Route for Router 1
 
-[iproute1](iproute1.png)
+![iproute1](iproute1.png)
 
 ### IP Route for Router 2
 
-[iproute2](iproute2.png)
+![iproute2](iproute2.png)
 
 ### End to End ping
 
-[ping](ping.png)
+![ping](ping.png)
 
