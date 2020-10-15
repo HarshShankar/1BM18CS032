@@ -3,7 +3,7 @@
 ## [Lab 1](./Lab1)
 1. [Program to print today's date](Lab1/first.sh)
 2. [Program to find area of the circle](Lab1/area_circle.sh)
-3. [Program to perform basic calculator operations](Lab2/calc.sh)
+3. [Program to perform basic calculator operations](Lab1/calc.sh)
 ## [Lab 2](./Lab2)
 4. [Program to perform calculations using `expr` command](Lab2/exprcalc.sh)
 5. [Program to accept a filename from the User and display the attributes, contents and word count of the file Perform copy,rename  operation by accepting two filenames from the user ](Lab2/file.sh)
