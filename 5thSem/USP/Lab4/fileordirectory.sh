@@ -5,6 +5,7 @@ if [ $# -ne 1 ]
 then 
     echo "Enter the file/directory name"
 else
+    echo "Attributes:"
     if [ -f $1 ]
     then
         echo `ls -l $1`

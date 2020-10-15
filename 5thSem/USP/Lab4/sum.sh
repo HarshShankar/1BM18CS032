@@ -12,4 +12,4 @@ do
     i=$((i+2))
 done 
 
-echo $sum
+echo "Sum of even numbers from 0 to $n is $sum"

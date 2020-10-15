@@ -2,7 +2,7 @@
 
 echo "Enter a number: \c"
 read num
-
+f=$num
 fact=1
 
 while [ $num -gt 1 ]
@@ -11,4 +11,4 @@ do
     num=$((num - 1))
 done
 
-echo $fact
+echo "The factorial of $f is $fact"
