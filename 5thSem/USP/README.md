@@ -15,4 +15,6 @@
 9. [Program to  find the FACTORIAL OF A NUMBER using Looping construct.](Lab4/fact.sh)
 10. [Program to find the POWER OF A NUMBER using loop construct.](Lab4/power.sh)
 11. [Program to accept a file as a command line argument and display whether it is ordinary file or directory file and display their attributes.](Lab4/fileordirectory.sh)
-13. [Program to  find the SUM OF EVEN NUMBERS UPTO N using Looping construct.](Lab4)
+13. [Program to  find the SUM OF EVEN NUMBERS UPTO N using Looping construct.](Lab4/sum.sh)
+14. [Program to convert the Temperatures FAHERENHEIT to CELCIUS (f -32) *5 /9.](Lab5/farenhiettocelc.sh)
+15. [Program to find Fibonacci Series Upto N using While Construct.](Lab5/fibonacci.sh)
