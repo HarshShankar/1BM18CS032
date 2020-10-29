@@ -18,4 +18,4 @@
 13. [Program to  find the SUM OF EVEN NUMBERS UPTO N using Looping construct.](Lab4/sum.sh)
 ## [Lab 5](./Lab5)
 14. [Program to convert the Temperatures FAHERENHEIT to CELCIUS (f -32) *5 /9.](Lab5/farenhiettocelc.sh)
-15. [Program to find Fibonacci Series Upto N using While Construct.](Lab5/fibonacci.sh)
+15. [Program to find Fibonacci Series Upto N using While Construct.](Lab5/fibonnaci.sh)
