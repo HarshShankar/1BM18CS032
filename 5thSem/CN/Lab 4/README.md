@@ -2,7 +2,7 @@
 
 ## Observations and learnings
 
-- Creating a multiple router topology by connecting routersthrough serial ports and PC-router,Switch-router through fast ethernet.
+- Creating a multiple router topology by connecting routers through serial ports and PC-router,Switch-router through fast ethernet.
 - Assigning the ip addresses and default gateway to routers and PCs using the same method as in [Lab2](../Lab2)
 - Assigning the static routes to router1 using the same method as in [Lab3](../Lab3)
 - Assigning the default gateway routes to router0 and router2 using `ip route 0.0.0.0 0.0.0.0 <next hop>` in priviliged(`enable`)  configure (`configure terminal`) mode.
