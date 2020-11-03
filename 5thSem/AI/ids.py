@@ -30,7 +30,7 @@ class Graph:
 
 k=input("Enter the number of edges \n")
 g=Graph(int(k))
-for i in range(int(k-1)):
+for i in range(int(k)-1):
     u,v=input("Enter the values of u and v \n").split()
     g.addEdge(int(u),int(v))
 #g.addEdge(0,1)
