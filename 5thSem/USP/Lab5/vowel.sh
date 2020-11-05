@@ -1,4 +1,4 @@
-#Program to perform arithmetic operations on a set of two numbers using case expression
+#Program to check if the character is a vowel or character
 
 #!/bin/bash
 echo "Enter character: "
