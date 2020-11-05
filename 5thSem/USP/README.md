@@ -19,3 +19,5 @@
 ## [Lab 5](./Lab5)
 14. [Program to convert the Temperatures FAHERENHEIT to CELCIUS (f -32) *5 /9.](Lab5/farenhiettocelc.sh)
 15. [Program to find Fibonacci Series Upto N using While Construct.](Lab5/fibonnaci.sh)
+16. [Program to perform arithmetic operations on a set of two numbers using case expression ](Lab5/arithmetic.sh)
+17. [Program to perform arithmetic operations on a set of two numbers using case expression](Lab5/vowel.sh)
