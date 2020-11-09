@@ -8,7 +8,7 @@
 - Configured RIP routing using `router rip` then `network <address>` commands, where _address_ refers to the networks directly connected to the router
 
 ## Topology
-![topology](Topology.png)
+![topology](topology.png)
 
 ## Router 0 Config (_10.0.0.10_)
 ![router0config](router0rip.png)
