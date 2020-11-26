@@ -21,3 +21,6 @@
 15. [Program to find Fibonacci Series Upto N using While Construct.](Lab5/fibonnaci.sh)
 16. [Program to perform arithmetic operations on a set of two numbers using case expression ](Lab5/arithmetic.sh)
 17. [#Program to check if the character is a vowel or character](Lab5/vowel.sh)
+## [Lab 6](./Lab6)
+18. [Program to concatenate the n1-n5 lines of File1 and n8-n15 lines of File2 to File3 using proper filter command of head and tail.](Lab6/concatenate.sh)
+19. [Program that accepts valid login names as arguments and print their corresponding home directories using grep command (use  /etc/passwd to search Login name).](Lab6/login.sh)
