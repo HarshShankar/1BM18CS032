@@ -1,0 +1,9 @@
+echo "The home directories are:"
+grep -v "nologin" /etc/passwd | cut -d ":" -f 6echo "Enter the destination file"
+read f3
+rm -rf $f3
+echo "$f1 contents: " >>f3
+head -5 $f1 >>$f3
+echo "$f2 contents: ">>f3
+head -15 $f2| tail -8 >>$f3
+echo "Successfully appended the lines to $f3"
