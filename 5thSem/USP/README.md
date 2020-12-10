@@ -24,5 +24,6 @@
 ## [Lab 6](./Lab6)
 18. [Program to concatenate the n1-n5 lines of File1 and n8-n15 lines of File2 to File3 using proper filter command of head and tail.](Lab6/concat.sh)
 19. [Program that accepts valid login names as arguments and print their corresponding home directories using grep command (use  /etc/passwd to search Login name).](Lab6/login.sh)
+## [Lab 7](./Lab7)
 20. [Program to count the number of vowels in a file using tr command.](Lab7/vowels.sh)
 21. [Program that accepts two filenames as arguments. Check if the permissions for these files are identical and if the permissions are identical output the common permissions, otherwise output each filename followed by its permission](Lab7/perms.sh)
