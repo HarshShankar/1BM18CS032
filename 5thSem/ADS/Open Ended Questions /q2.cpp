@@ -4,7 +4,7 @@ using namespace std;
 void uniq(int l,int r){
     vector <int> res;
     for(int i=l;i <= r;i++){
-        int num= i;
+        int num= abs(i);
         bool visited[10]= {false};
         while(num){
             if (visited[num%10])
