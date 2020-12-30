@@ -1,0 +1,27 @@
+import socket
+
+HOST='192.168.0.106'
+PORT= 65402
+
+print('----------------PROFESSOR---------------')
+
+with socket.socket(socket.AF_INET,socket.SOCK_DGRAM) as sock:
+    sock.bind((HOST,PORT))
+    while True:
+        data,addr = sock.recvfrom(1024)
+        if not data:
+            break
+    
+        filename=data.decode('utf-8')
+        print(f'Received Filename: {filename} From: {addr}')
+
+        try: 
+            with open(filename,'r') as f:
+                data=f.read()
+            data=bytes(data,'utf-8')
+        except:
+            data=bytes(f'File {filename} not found','utf-8')
+        
+        sock.sendto(data, addr)
+        print(f'Sent data To: {addr}')
+        print()
