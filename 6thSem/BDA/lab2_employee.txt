@@ -1,0 +1,90 @@
+CREATE KEYSPACE employee;
+CREATE KEYSPACE employee WITH replication = {'class': 'SimpleStrategy','replication_factor':1};
+DESCRIBE KEYSPACES;
+
+employee  system_auth         system_schema  system_views         
+system    system_distributed  system_traces  system_virtual_schema
+USE employee ;
+CREATE TABLE employee_info(emp_id text PRIMARY KEY , emp_name text, designation text, date_of_joining timestamp, salary double, dept_name text);
+DESCRIBE employee_info;
+
+CREATE TABLE employee.employee_info (
+    emp_id text PRIMARY KEY,
+    date_of_joining timestamp,
+    dept_name text,
+    designation text,
+    emp_name text,
+    salary double
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+BEGIN BATCH INSERT INTO employee_info(emp_id, emp_name, designation, date_of_joining, salary, dept_name) VALUES ('3','Serven Sally','Senior Advocate','2021-01-12',20000, 'Coprate Lawyer') INSERT INTO employee_info(emp_id, emp_name, designation, date_of_joining, salary, dept_name) VALUES ('3','Marsh Mettal','Team Leader','2020-02-10',10000, 'Software') APPLY BATCH;
+SELECT * from employee_info ;
+
+ emp_id | date_of_joining                 | dept_name   | designation | emp_name     | salary
+--------+---------------------------------+-------------+-------------+--------------+--------
+      3 | 2021-01-12 00:00:00.000000+0000 |    Software | Team Leader | Serven Sally |  20000
+      2 | 2020-03-14 00:00:00.000000+0000 |  Accounting |      Intern |        Kevin |   2000
+      1 | 2021-01-12 00:00:00.000000+0000 | Procurement |     Manager |       Arthur |  20000
+BEGIN BATCH INSERT INTO employee_info(emp_id, emp_name, designation, date_of_joining, salary, dept_name) VALUES ('3','Serven Sally','Senior Advocate','2021-01-12',20000, 'Coprate Lawyer') INSERT INTO employee_info(emp_id, emp_name, designation, date_of_joining, salary, dept_name) VALUES ('4','Marsh Mettal','Team Leader','2020-02-10',10000, 'Software') APPLY BATCH;
+SELECT * from employee_info ;                                                                                                              emp_id | date_of_joining                 | dept_name      | designation     | emp_name     | salary                                                      --------+---------------------------------+----------------+-----------------+--------------+--------
+      4 | 2020-02-10 00:00:00.000000+0000 |       Software |     Team Leader | Marsh Mettal |  10000
+      3 | 2021-01-12 00:00:00.000000+0000 | Coprate Lawyer | Senior Advocate | Serven Sally |  20000
+      2 | 2020-03-14 00:00:00.000000+0000 |     Accounting |          Intern |        Kevin |   2000
+      1 | 2021-01-12 00:00:00.000000+0000 |    Procurement |         Manager |       Arthur |  20000
+
+(4 rows)
+INSERT INTO employee_info(emp_id, emp_name, designation, date_of_joining, salary, dept_name) VALUES ('121','Martin Mosley','Sub- Ordinate','2021-04-14',7600, 'Human Resource');
+SELECT * from employee_info ;                                                                                                             
+ emp_id | date_of_joining                 | dept_name      | designation     | emp_name      | salary                                                     
+--------+---------------------------------+----------------+-----------------+---------------+--------
+      4 | 2020-02-10 00:00:00.000000+0000 |       Software |     Team Leader |  Marsh Mettal |  10000
+      3 | 2021-01-12 00:00:00.000000+0000 | Coprate Lawyer | Senior Advocate |  Serven Sally |  20000
+    121 | 2021-04-14 00:00:00.000000+0000 | Human Resource |   Sub- Ordinate | Martin Mosley |   7600
+      2 | 2020-03-14 00:00:00.000000+0000 |     Accounting |          Intern |         Kevin |   2000
+      1 | 2021-01-12 00:00:00.000000+0000 |    Procurement |         Manager |        Arthur |  20000
+ALTER TABLE employee_info ADD Project text;
+UPDATE employee_info SET project = 'Project 1' WHERE emp_id='1';
+UPDATE employee_info SET project = 'Project X' WHERE emp_id in ('2','3','4','121');
+SELECT * from employee_info ;
+
+ emp_id | date_of_joining                 | dept_name        | designation     | emp_name     | project   | salary
+--------+---------------------------------+------------------+-----------------+--------------+-----------+--------
+      4 | 2020-02-10 00:00:00.000000+0000 |         Software |     Team Leader | Marsh Mettal | Project X |  10000
+      3 | 2021-01-12 00:00:00.000000+0000 |   Coprate Lawyer | Senior Advocate | Serven Sally | Project X |  20000
+    121 | 2021-04-14 00:00:00.000000+0000 | Integration Cell |   Sub- Ordinate | Ramesh Kumar | Project X |   7600
+      2 | 2020-03-14 00:00:00.000000+0000 |       Accounting |          Intern |        Kevin | Project X |   2000
+      1 | 2021-01-12 00:00:00.000000+0000 |      Procurement |         Manager |       Arthur | Project 1 |  20000
+
+(5 rows)
+INSERT INTO employee_info(emp_id,emp_name, designation, date_of_joining,dept_name,project,salary) VALUES ('122','Tuson Yulo','Officer','2021-03-01','Security','Project Y',30000);
+SELECT * from employee_info ;                                                                                                              emp_id | date_of_joining                 | dept_name        | designation     | emp_name     | project   | salary
+--------+---------------------------------+------------------+-----------------+--------------+-----------+--------
+      4 | 2020-02-10 00:00:00.000000+0000 |         Software |     Team Leader | Marsh Mettal | Project X |  10000
+      3 | 2021-01-12 00:00:00.000000+0000 |   Coprate Lawyer | Senior Advocate | Serven Sally | Project X |  20000
+    121 | 2021-04-14 00:00:00.000000+0000 | Integration Cell |   Sub- Ordinate | Ramesh Kumar | Project X |   7600
+      2 | 2020-03-14 00:00:00.000000+0000 |       Accounting |          Intern |        Kevin | Project X |   2000
+    122 | 2021-03-01 00:00:00.000000+0000 |         Security |         Officer |   Tuson Yulo | Project Y |  30000
+      1 | 2021-01-12 00:00:00.000000+0000 |      Procurement |         Manager |       Arthur | Project 1 |  20000
+INSERT INTO employee_info(emp_id,emp_name, designation, date_of_joining,dept_name,project,salary) VALUES ('122','Tuson Yulo','Officer','2021-03-01','Security','Project Y',30000) using ttl 120;
+SELECT ttl(designation) from employee_info where emp_id='122';
+
+ ttl(designation)
+------------------
+               60
+
+(1 rows)
+
