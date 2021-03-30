@@ -1,3 +1,4 @@
+stud_id , book_id , book_name                  , conuter_value , date_of_issue                   , stud_name
 114 ,   123ER ,                  Cindrella ,             1 , 2001-04-03 00:00:00.000000+0000 ,    Marcus
 111 ,   56TXT ,        Operations Research ,             2 , 2002-09-12 00:00:00.000000+0000 ,     Manoj
 113 ,   34EDC ,            Robinson Crusoe ,             1 , 2003-02-01 00:00:00.000000+0000 ,     Manoj
