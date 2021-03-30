@@ -1,0 +1,86 @@
+CREATE KEYSPACE library WITH replication = {'class': 'SimpleStrategy','replication_factor':1};
+USE library ;
+CREATE TABLE Library_info(stud_id int PRIMARY KEY , book_name text, book_id text, date_of_issue timestamp);
+ALTER TABLE library_info ADD conuter_value counter ;
+DESCRIBE TABLE library_info;
+
+CREATE TABLE library.library_info (
+    stud_id int PRIMARY KEY,
+    book_id text,
+    book_name text,
+    conuter_value counter,
+    date_of_issue timestamp
+) WITH additional_write_policy = '99p'
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND cdc = false
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '16', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND default_time_to_live = 0
+    AND extensions = {}
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair = 'BLOCKING'
+    AND speculative_retry = '99p';
+ALTER TABLE library_info ADD stud_name text ;
+BEGIN BATCH  INSERT INTO library_info (stud_id,stud_name,book_name,book_id,date_of_issue) VALUES ( 111,'Manoj','Operations Research','56TXT','2002-09-12') INSERT INTO library_info (stud_id,stud_name,book_name,book_id,date_of_issue) VALUES ( 112,'Kaleel','Engineering Mathematics- 3','5ERW4','2004-04-10') INSERT INTO library_info (stud_id,stud_name,book_name,book_id,date_of_issue) VALUES ( 113,'Manoj','Robinson Crusoe','34EDC','2003-02-01') INSERT INTO library_info (stud_id,stud_name,book_name,book_id,date_of_issue) VALUES ( 114,'Marcus','Cindrella','123ER','2001-04-03') APPLY BATCH;
+SELECT * FROM library_info ;
+
+ stud_id | book_id | book_name                  | conuter_value | date_of_issue                   | stud_name
+---------+---------+----------------------------+---------------+---------------------------------+-----------
+     114 |   123ER |                  Cindrella |          null | 2001-04-03 00:00:00.000000+0000 |    Marcus
+     111 |   56TXT |        Operations Research |          null | 2002-09-12 00:00:00.000000+0000 |     Manoj
+     113 |   34EDC |            Robinson Crusoe |          null | 2003-02-01 00:00:00.000000+0000 |     Manoj
+     112 |   5ERW4 | Engineering Mathematics- 3 |          null | 2004-04-10 00:00:00.000000+0000 |    Kaleel
+
+(4 rows)
+update library_info set conuter_value = conuter_value + 1 where stud_id = 113;
+SELECT * FROM library_info ;
+
+ stud_id | book_id | book_name                  | conuter_value | date_of_issue                   | stud_name
+---------+---------+----------------------------+---------------+---------------------------------+-----------
+     114 |   123ER |                  Cindrella |          null | 2001-04-03 00:00:00.000000+0000 |    Marcus
+     111 |   56TXT |        Operations Research |          null | 2002-09-12 00:00:00.000000+0000 |     Manoj
+     113 |   34EDC |            Robinson Crusoe |             1 | 2003-02-01 00:00:00.000000+0000 |     Manoj
+     112 |   5ERW4 | Engineering Mathematics- 3 |          null | 2004-04-10 00:00:00.000000+0000 |    Kaleel
+
+(4 rows)
+update library_info set conuter_value = conuter_value + 1 where stud_id = 112;
+update library_info set conuter_value = conuter_value + 1 where stud_id = 114;
+update library_info set conuter_value = conuter_value + 2 where stud_id = 111;
+SELECT * FROM library_info ;
+
+ stud_id | book_id | book_name                  | conuter_value | date_of_issue                   | stud_name
+---------+---------+----------------------------+---------------+---------------------------------+-----------
+     114 |   123ER |                  Cindrella |             1 | 2001-04-03 00:00:00.000000+0000 |    Marcus
+     111 |   56TXT |        Operations Research |             2 | 2002-09-12 00:00:00.000000+0000 |     Manoj
+     113 |   34EDC |            Robinson Crusoe |             1 | 2003-02-01 00:00:00.000000+0000 |     Manoj
+     112 |   5ERW4 | Engineering Mathematics- 3 |             1 | 2004-04-10 00:00:00.000000+0000 |    Kaleel
+
+(4 rows)
+select * from library_info where conuter_value =2 allow filtering;
+
+ stud_id | book_id | book_name           | conuter_value | date_of_issue                   | stud_name
+---------+---------+---------------------+---------------+---------------------------------+-----------
+     111 |   56TXT | Operations Research |             2 | 2002-09-12 00:00:00.000000+0000 |     Manoj
+copy library_info(stud_id,stud_name, book_name, book_id, date_of_issue,conuter_value) to 'library_info.csv'
+           ... ;
+Using 1 child processes
+
+Starting copy of library.library_info with columns [stud_id, stud_name, book_name, book_id, date_of_issue, conuter_value].
+cqlshlib.copyutil.ExportProcess.write_rows_to_csv(): writing row
+cqlshlib.copyutil.ExportProcess.write_rows_to_csv(): writing row
+cqlshlib.copyutil.ExportProcess.write_rows_to_csv(): writing row
+cqlshlib.copyutil.ExportProcess.write_rows_to_csv(): writing row/s
+Processed: 4 rows; Rate:       8 rows/s; Avg. rate:       8 rows/s
+4 rows exported to 1 files in 0.490 seconds.
+copy library_info(stud_id,stud_name, book_name, book_id, date_of_issue,conuter_value) from 'library_info.csv' ;
+Using 1 child processes
+
+Starting copy of library.library_info with columns [stud_id, stud_name, book_name, book_id, date_of_issue, conuter_value].
+Processed: 4 rows; Rate:       6 rows/s; Avg. rate:       9 rows/s
+4 rows imported from 1 files in 0.447 seconds (0 skipped).
