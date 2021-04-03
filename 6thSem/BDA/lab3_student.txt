@@ -1,0 +1,316 @@
+>mongo
+
+>>use student
+switched to db student
+>>db.createCollection("StudentDeets")
+ok
+>>show tables
+StudentDeets
+>>db.StudentDeets.insert([ 
+                        {
+                            roll_no:1,
+                            age: 20,
+                            contact_no: 9901588040,
+                            email_id:"harshshankar.cs18@bmsce.ac.in"
+                        },
+                        {
+                            roll_no:10,
+                            age: 23,
+                            contact_no: 9712388040,
+                            email_id:"akshaymittur.cs18@bmsce.ac.in"
+                        },
+                        {
+                            roll_no:20,
+                            age: 19,
+                            contact_no: 9876543210,
+                            email_id:"harjzzz.cs18@bmsce.ac.in"
+                        }
+                    ])
+Inserted 1 record(s) in 3ms
+>>db.StudentDeets.insert({
+                            roll_no:11,
+                            age: 22,
+                            contact_no: 9901588040,
+                            email_id:"manikanta.cs18@bmsce.ac.in"
+                        })
+Inserted 1 record(s) in 2ms
+>>db.StudentDeets.find()
+/* 1 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da2"),
+    "roll_no" : 1.0,
+    "age" : 20.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da3"),
+    "roll_no" : 10.0,
+    "age" : 23.0,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymittur.cs18@bmsce.ac.in"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da4"),
+    "roll_no" : 20.0,
+    "age" : 19.0,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da5"),
+    "roll_no" : 1.0,
+    "age" : 20.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da6"),
+    "roll_no" : 10.0,
+    "age" : 23.0,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymittur.cs18@bmsce.ac.in"
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da7"),
+    "roll_no" : 20.0,
+    "age" : 19.0,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("6068110f43b36a147128bea7"),
+    "roll_no" : 11.0,
+    "age" : 22.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "manikanta.cs18@bmsce.ac.in"
+}
+>>db.StudentDeets.update({"roll_no":10},{$set:{"email_id":"akshaymit.cs18@bmsce.ac.in"}})
+Updated 1 existing record(s) in 1ms
+>>db.StudentDeets.find()
+/* 1 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da2"),
+    "roll_no" : 1.0,
+    "age" : 20.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da3"),
+    "roll_no" : 10.0,
+    "age" : 23.0,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymit.cs18@bmsce.ac.in"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da4"),
+    "roll_no" : 20.0,
+    "age" : 19.0,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da5"),
+    "roll_no" : 1.0,
+    "age" : 20.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da6"),
+    "roll_no" : 10.0,
+    "age" : 23.0,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymittur.cs18@bmsce.ac.in"
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da7"),
+    "roll_no" : 20.0,
+    "age" : 19.0,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("6068110f43b36a147128bea7"),
+    "roll_no" : 11.0,
+    "age" : 22.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "manikanta.cs18@bmsce.ac.in"
+}
+>>db.StudentDeets.replaceOne({"roll_no":11},{name:"XYZ","roll_no" : 11.0,"age" : 22.0,"contact_no" : 9901588040.0,"email_id" : "manikanta.cs18@bmsce.ac.in"})
+/* 1 */
+{
+    "acknowledged" : true,
+    "matchedCount" : 1.0,
+    "modifiedCount" : 1.0
+}
+>>db.StudentDeets.find().pretty()
+/* 1 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da2"),
+    "roll_no" : 1.0,
+    "age" : 20.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da3"),
+    "roll_no" : 10.0,
+    "age" : 23.0,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymit.cs18@bmsce.ac.in"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("60680e4dc8ec042be2ed3da4"),
+    "roll_no" : 20.0,
+    "age" : 19.0,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da5"),
+    "roll_no" : 1.0,
+    "age" : 20.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da6"),
+    "roll_no" : 10.0,
+    "age" : 23.0,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymittur.cs18@bmsce.ac.in"
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("60681020c8ec042be2ed3da7"),
+    "roll_no" : 20.0,
+    "age" : 19.0,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("6068110f43b36a147128bea7"),
+    "name" : "XYZ",
+    "roll_no" : 11.0,
+    "age" : 22.0,
+    "contact_no" : 9901588040.0,
+    "email_id" : "manikanta.cs18@bmsce.ac.in"
+}
+
+>mongoexport --db student --collection StudentDeets --type=csv --fields _id,name,roll_no,age,contact_no,email_id --out students.csv
+2021-04-03T12:50:58.338+0530    connected to: localhost
+2021-04-03T12:50:58.338+0530    exported 7 records
+
+>>db.StudentDeets.drop()
+true
+
+>mongoimport --db student --collection StudentDeets --file students.csv --type csv --headerline
+2021-04-03T12:55:31.782+0530    connected to: localhost
+2021-04-03T12:55:31.951+0530    imported 7 documents
+>>db.StudentDeets.find().pretty()
+/* 1 */
+{
+    "_id" : "ObjectId(60680e4dc8ec042be2ed3da2)",
+    "name" : "",
+    "roll_no" : 1,
+    "age" : 20,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 2 */
+{
+    "_id" : "ObjectId(60680e4dc8ec042be2ed3da4)",
+    "name" : "",
+    "roll_no" : 20,
+    "age" : 19,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 3 */
+{
+    "_id" : "ObjectId(60680e4dc8ec042be2ed3da3)",
+    "name" : "",
+    "roll_no" : 10,
+    "age" : 23,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymit.cs18@bmsce.ac.in"
+}
+
+/* 4 */
+{
+    "_id" : "ObjectId(60681020c8ec042be2ed3da6)",
+    "name" : "",
+    "roll_no" : 10,
+    "age" : 23,
+    "contact_no" : 9712388040.0,
+    "email_id" : "akshaymittur.cs18@bmsce.ac.in"
+}
+
+/* 5 */
+{
+    "_id" : "ObjectId(60681020c8ec042be2ed3da7)",
+    "name" : "",
+    "roll_no" : 20,
+    "age" : 19,
+    "contact_no" : 9876543210.0,
+    "email_id" : "harjzzz.cs18@bmsce.ac.in"
+}
+
+/* 6 */
+{
+    "_id" : "ObjectId(60681020c8ec042be2ed3da5)",
+    "name" : "",
+    "roll_no" : 1,
+    "age" : 20,
+    "contact_no" : 9901588040.0,
+    "email_id" : "harshshankar.cs18@bmsce.ac.in"
+}
+
+/* 7 */
+{
+    "_id" : "ObjectId(6068110f43b36a147128bea7)",
+    "name" : "XYZ",
+    "roll_no" : 11,
+    "age" : 22,
+    "contact_no" : 9901588040.0,
+    "email_id" : "manikanta.cs18@bmsce.ac.in"
+}
